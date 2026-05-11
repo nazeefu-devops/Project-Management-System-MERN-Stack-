@@ -1,4 +1,4 @@
-# 📌 Project Management System (MERN Stack + Docker)
+# 📌 Project Management System
 
 A full-stack Project Management System built using the **MERN stack (MongoDB, Express, React, Node.js)** and containerized using **Docker** to simulate a real-world multi-service architecture.
 
