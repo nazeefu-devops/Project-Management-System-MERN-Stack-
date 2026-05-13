@@ -43,45 +43,9 @@ This project focuses not only on application development but also on **DevOps fu
 
 ## 🐳 Docker Setup Guide
 
-This project runs using **manual Docker containers (without Docker Compose)**.
+This project runs using Docker Compose.
 
 ---
-
-### 1️⃣ Create Docker Network
-
-```bash
-docker network create mongo-network
-2️⃣ Run MongoDB Container
-docker run --name mongo \
-  --network mongo-network \
-  -p 27017:27017 \
-  -d mongo:latest
-3️⃣ Run Backend Container
-Make sure your environment variable is set:
-
-MONGODB_PATH=mongodb://mongo:27017/todo
-Then run:
-
-docker build -t backend-app .
-
-docker run --name backend \
-  --network mongo-network \
-  -p 9000:9000 \
-  -d backend-app
-4️⃣ Run Frontend Container
-docker build -t frontend-app .
-
-docker run -p 3000:3000 frontend-app
-⚠️ Important Notes
-Never use localhost for MongoDB inside containers
-
-Use container name (mongo) for inter-container communication
-
-Ensure both backend and MongoDB are on the same Docker network
-
-MongoDB database (todo) is created automatically on first data insert
-
-Backend must expose 0.0.0.0, not localhost
 
 🧠 Key DevOps Learnings
 This project helped me understand real-world system behavior:
