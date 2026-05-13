@@ -1,0 +1,42 @@
+services:
+  backend:
+   build: ./backend
+   ports:
+     - 9000:9000
+   networks:
+    - mern-network
+   container_name: backend  
+   environment:
+    MONGODB_PATH: mongodb://mongodb:27017/todo
+   depends_on: 
+    - mongodb
+  frontend:
+   build: ./frontend
+   ports:
+     - 3000:3000
+   networks:
+    - mern-network
+   container_name: frontend
+
+  mongodb:
+   image: mongo:latest
+   ports:
+     - 27017:27017
+   networks:
+    - mern-network
+   volumes:
+      - mongo-data:/data/db
+   container_name: mongodb
+
+
+networks:
+   mern-network:
+     driver: bridge
+
+volumes:
+  mongo-data:
+   driver: local
+
+     
+
+   
